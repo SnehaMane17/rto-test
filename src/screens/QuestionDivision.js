@@ -1,10 +1,30 @@
 import React from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import { fetchPracticeList} from '../services/api';
 
 const QuestionDivision = ({ route, navigation }) => {
+  const [data, setData] = useState({});
+  const [totalQuestions, setTotalQuestions] = useState(0);
   const { language, s_id } = route.params;
-  const totalQuestions = 431;
   const questionsPerPage = 25;
+
+
+  useEffect(() => {
+    const fetchPracticeTestData = async () => {
+      try {
+        const responseData = await fetchPracticeList(`getPracticeList/`, language, s_id);
+        console.log(responseData);
+        setData(responseData.data);
+        setTotalQuestions(responseData.data.total_count);
+      } catch (error) {
+        Alert.alert('Error', error.message);
+        console.log(error, 'error');
+      }
+    };
+
+    fetchPracticeTestData()
+
+  }, [language]);
 
   const cards = Array.from({ length: Math.ceil(totalQuestions / questionsPerPage) }, (_, index) => ({
     id: index + 1,
