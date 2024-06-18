@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://rtovaahan.mdssoftware.com/';
+export const BASE_URL = 'https://returning-adolescent-composer-monitoring.trycloudflare.com/';
 
 export const fetchData = async (endpoint, language, limit, offset) => {
 const url = `${BASE_URL}${endpoint}${language}/${limit}/${offset}`;
@@ -103,6 +103,24 @@ export const fetchRTOData = async (endpoint, language) => {
       throw error;
     }
   };
+
+  export const fetchPracticeList = async (endpoint, language, s_id) => {
+    const url = `${BASE_URL}${endpoint}${language}/${s_id}`;
+    console.log(url,'url')
+      try {
+        const response = await fetch(url);
+        console.log('response', response)
+        const data = await response.json();
+        console.log('data', data)
+        if (!response.ok) {
+          throw new Error(data.message || 'Failed to fetch data');
+        }
+        return data;
+      } catch (error) {
+        throw error;
+      }
+    };
+
   export const login = async (registrationNo, dob) => {
     try {
       const formData = new FormData();
