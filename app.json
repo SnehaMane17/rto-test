@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "driving school app",
+    "slug": "drivingschoolapp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FFFFFF"
+    },
+    "android": {
+      "package": "com.snehamarathe.drivingschoolapp" 
+    },
+    "extra": {
+      "eas": {
+        "projectId": "78bada75-f945-47ca-ab50-c6cc862ae643"
+      }
+    }
+  }
+}
