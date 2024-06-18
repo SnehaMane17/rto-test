@@ -3,12 +3,12 @@ import { View, Text, StyleSheet, BackHandler } from 'react-native';
 import Card from '../components/Card';
 
 const RTOResultScreen = ({ route, navigation }) => {
-  const { score , token} = route.params;
+  const { score , token, s_id} = route.params;
   const passThreshold = 9;
 
   useEffect(() => {
     const backAction = () => {
-      navigation.navigate('Home', { token });
+      navigation.navigate('Home', { token, s_id });
       return true;
     };
 

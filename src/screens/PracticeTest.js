@@ -19,7 +19,6 @@ const PracticeTest = ({ route, navigation }) => {
     const fetchPracticeTestData = async () => {
       try {
         const responseData = await fetchData(`getquestions/`, language, 25, start);
-        console.log(responseData);
         setData(responseData.data);
         setTimer(30);
       } catch (error) {
@@ -49,7 +48,7 @@ const PracticeTest = ({ route, navigation }) => {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [language, start, end, currentIndex]);
+  }, [language, start, end, currentIndex, s_id, token]);
 
   useEffect(() => {
     if (timer === 0) {
@@ -112,13 +111,13 @@ const PracticeTest = ({ route, navigation }) => {
       limit: 25,
       offset: start
     };
-    console.log(scoreData, 'scoree data')
+  
 
     try {
       const response = await saveScore('savescore', scoreData, token);
       console.log(response.data);
       setSubmitted(true);
-      navigation.navigate('PracticeResult', { score: correctAnswers, token });
+      navigation.navigate('PracticeResult', { score: correctAnswers, token, s_id });
     } catch (error) {
       Alert.alert('Error', 'Failed to save score');
       console.log(error, 'error');

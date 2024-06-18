@@ -19,7 +19,6 @@ const RTOTest = ({ route, navigation }) => {
     const fetchRTOTestData = async () => {
       try {
         const responseData = await fetchRTOData(`getRTOQuestions/`, language);
-        console.log('rrrtttooo', responseData) ;
         setData(responseData.data);
         setTimer(30); 
         setTotalQuestions(responseData.data.length);
@@ -101,7 +100,7 @@ const RTOTest = ({ route, navigation }) => {
       const response = await saveRTOScore('saveRTOScore', scoreData,token);
       console.log(response.data);
       setSubmitted(true);
-      navigation.navigate('RTOResultScreen', { score: correctAnswers, token });
+      navigation.navigate('RTOResultScreen', { score: correctAnswers, token, s_id });
     } catch (error) {
       Alert.alert('Error', 'Failed to save score');
       console.log(error, 'error');

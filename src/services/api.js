@@ -1,13 +1,11 @@
-export const BASE_URL = 'https://returning-adolescent-composer-monitoring.trycloudflare.com/';
+export const BASE_URL = 'http://rtovaahan.mdssoftware.com/';
 
 export const fetchData = async (endpoint, language, limit, offset) => {
 const url = `${BASE_URL}${endpoint}${language}/${limit}/${offset}`;
 console.log(url,'url')
   try {
     const response = await fetch(url);
-    console.log('response', response)
     const data = await response.json();
-    console.log('data', data)
     if (!response.ok) {
       throw new Error(data.message || 'Failed to fetch data');
     }
@@ -32,7 +30,6 @@ export const saveScore = async (endpoint, scoreData, token) => {
       },
       body: JSON.stringify(dataToSend),
     });
-    console.log('response', response);
     const data = await response.json();
     console.log('data', data);
     if (!response.ok) {
@@ -49,9 +46,7 @@ export const getScore = async (endpoint, student_id, limit, offset) => {
   console.log(url,'url')
   try {
     const response = await fetch(url);
-    console.log('response', response)
     const data = await response.json();
-    console.log('data', data)
     if (!response.ok) {
       throw new Error(data.message || 'Failed to fetch data');
     }
@@ -65,9 +60,7 @@ export const fetchRTOData = async (endpoint, language) => {
   console.log(url,'url')
     try {
       const response = await fetch(url);
-      console.log('response', response)
       const data = await response.json();
-      console.log('data', data)
       if (!response.ok) {
         throw new Error(data.message || 'Failed to fetch data');
       }
@@ -92,9 +85,7 @@ export const fetchRTOData = async (endpoint, language) => {
         },
         body: JSON.stringify(dataToSend),
       });
-      console.log('response', response);
       const data = await response.json();
-      console.log('data', data);
       if (!response.ok) {
         throw new Error(data.message || 'Failed to save score');
       }
@@ -109,9 +100,7 @@ export const fetchRTOData = async (endpoint, language) => {
     console.log(url,'url')
       try {
         const response = await fetch(url);
-        console.log('response', response)
         const data = await response.json();
-        console.log('data', data)
         if (!response.ok) {
           throw new Error(data.message || 'Failed to fetch data');
         }
@@ -133,7 +122,6 @@ export const fetchRTOData = async (endpoint, language) => {
       });
   
       const data = await response.json();
-  console.log('dtaaaaa', data)
       if (!response.ok) {
         throw new Error(data.message || 'Failed to login');
       }

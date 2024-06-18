@@ -24,7 +24,6 @@ const LoginScreen = ({ navigation }) => {
 
     try {
       const response = await login(registrationNo, dob);
-      console.log('testestetst', response)
       if (response && response.status == 200) {
         const token = response.token;
         const s_id = response.data.s_id;

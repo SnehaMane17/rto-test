@@ -14,7 +14,6 @@ const Reading = ({ route, navigation }) => {
     const fetchPracticeTestData = async () => {
       try {
         const responseData = await fetchData(`getquestions/`, language, 400, 1);
-        console.log(responseData);
         setData(responseData.data);
       } catch (error) {
         Alert.alert('Error', error.message);

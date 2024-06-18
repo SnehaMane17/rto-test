@@ -3,12 +3,12 @@ import { View, Text, Button, StyleSheet, Platform  } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
 const LanguageSelection = ({ navigation, route }) => {
-    const { nextScreen , s_id} = route.params;
+    const { nextScreen , s_id, token} = route.params;
     const [selectedLanguage, setSelectedLanguage] = useState('english'); // default to English
 
     const handleStartTest = () => {
         console.log('lang', s_id)
-        navigation.navigate(nextScreen, { language: selectedLanguage, s_id });
+        navigation.navigate(nextScreen, { language: selectedLanguage, s_id, token });
 
     };
 

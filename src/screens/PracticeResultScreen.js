@@ -2,13 +2,18 @@ import React, {useEffect} from 'react';
 import { View, Text, StyleSheet,BackHandler } from 'react-native';
 
 const PracticeResultScreen = ({ route,navigation }) => {
-  const { score, token } = route.params;
+  const { score, token, s_id } = route.params;
 
   const passThreshold = 12;
 
   useEffect(() => {
+    console.log('PracticeResultScreen received token:', token, 'and s_id:', s_id);
+  }, [token, s_id]);
+
+  useEffect(() => {
     const backAction = () => {
-      navigation.navigate('Home', {token});
+      console.log('Navigating back to Home with token:', token, 'and s_id:', s_id);
+      navigation.navigate('Home', {token, s_id});
       return true;
     };
 
@@ -18,7 +23,7 @@ const PracticeResultScreen = ({ route,navigation }) => {
     );
 
     return () => backHandler.remove();
-  }, [navigation]);
+  }, [navigation, s_id]);
 
 
   return (
