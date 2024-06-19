@@ -14,6 +14,7 @@ import RTOResultScreen from '../screens/RTOResultScreen';
 import Reading from '../screens/Reading';
 import LoginScreen from '../screens/LoginScreen';
 import InfoModal from '../components/InfoModal';
+import WelcomeScreen from '../screens/WelcomeScreen';
 
 const Stack = createStackNavigator();
 
@@ -27,6 +28,7 @@ const AppNavigator = () => {
     <PaperProvider>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="WelcomeScreen" component={WelcomeScreen}  options={{ headerTitleAlign: 'center' }}/>
           <Stack.Screen name="Home" component={HomeScreen} options={{ headerTitleAlign: 'center' }} />
           <Stack.Screen
             name="Practice Test"

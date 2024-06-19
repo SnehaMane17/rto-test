@@ -27,7 +27,7 @@ const LoginScreen = ({ navigation }) => {
       if (response && response.status == 200) {
         const token = response.token;
         const s_id = response.data.s_id;
-        navigation.navigate('Home', { token: token, s_id: s_id });
+        navigation.navigate('WelcomeScreen', { token: token, s_id: s_id });
       } else {
         Alert.alert('Login Failed', response.message || 'Invalid credentials');
       }

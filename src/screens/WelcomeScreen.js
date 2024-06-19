@@ -4,8 +4,14 @@ import logoH from '../../assets/logoH.jpeg'
 
 const { width } = Dimensions.get('window');
 
-const WelcomeScreen = () => (
-    <View style={styles.container}>
+const WelcomeScreen = ({ route, navigation }) => {
+  const { token, s_id} = route.params;
+
+    const goToHome = () => {
+    navigation.navigate('Home', { token ,s_id });
+  }
+  return(
+ <View style={styles.container}>
         <View style={styles.contentContainer}>
             <Text style={styles.title}>Subhash Chand</Text>
             <Text style={styles.subtitle}>Mob.: 70144 44208</Text>
@@ -28,11 +34,16 @@ const WelcomeScreen = () => (
             <Text style={styles.address}>Plot no 54, Balaji Vihar, near Ramlyawala dairy yojana, Sikar road, Jaipur, Rajasthan India</Text>
             <Text style={styles.email}>E-mail: mgautojpr@gmail.com</Text>
         </View>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={goToHome}>
             <Text style={styles.buttonText}>Start app</Text>
         </TouchableOpacity>
     </View>
-);
+  )
+
+   
+};
+
+export default WelcomeScreen;
 
 const styles = StyleSheet.create({
     container: {
@@ -138,4 +149,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default WelcomeScreen;
+
