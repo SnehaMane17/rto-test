@@ -4,9 +4,9 @@
     "slug": "drivingschoolapp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logoH.jpeg",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/logoH.jpeg",
       "resizeMode": "contain",
       "backgroundColor": "#FFFFFF"
     },
