@@ -7,7 +7,7 @@ const { width } = Dimensions.get('window');
 const WelcomeScreen = () => (
     <View style={styles.container}>
         <View style={styles.contentContainer}>
-            <Text style={styles.title}>Mukesh M. Bhandari</Text>
+            <Text style={styles.title}>Subhash Chand</Text>
             <Text style={styles.subtitle}>Mob.: 70144 44208</Text>
             <View style={styles.logoContainer}>
                 <Text style={styles.logo}>M. G Motors</Text>
@@ -77,8 +77,8 @@ const styles = StyleSheet.create({
         color: '#FFF',
     },
      logoImage: {
-        width: 50, // Adjust the width and height based on your image size
-        height: 50,
+        width: 80, // Adjust the width and height based on your image size
+        height: 80,
         resizeMode: 'contain',
         marginBottom: 20
     },
