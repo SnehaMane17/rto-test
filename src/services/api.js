@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://rtovaahan.mdssoftware.com/';
+export const BASE_URL = 'https://rtovaahan.mdssoftware.com/';
 
 export const fetchData = async (endpoint, language, limit, offset) => {
 const url = `${BASE_URL}${endpoint}${language}/${limit}/${offset}`;

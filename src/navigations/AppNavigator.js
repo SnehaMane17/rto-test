@@ -28,7 +28,7 @@ const AppNavigator = () => {
     <PaperProvider>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="WelcomeScreen" component={WelcomeScreen}  options={{ headerTitleAlign: 'center' }}/>
+        <Stack.Screen name="WelcomeScreen" component={WelcomeScreen}   options={{ headerShown: false }}/>
           <Stack.Screen name="Home" component={HomeScreen} options={{ headerTitleAlign: 'center' }} />
           <Stack.Screen
             name="Practice Test"
