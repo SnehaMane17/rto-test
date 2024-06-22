@@ -11,11 +11,11 @@
       "backgroundColor": "#FFFFFF"
     },
     "android": {
-      "package": "com.snehamarathe.drivingschoolapp" 
+       "package": "com.subhashchand.drivingschoolapp"
     },
     "extra": {
       "eas": {
-        "projectId": "78bada75-f945-47ca-ab50-c6cc862ae643"
+        "projectId": "907ce3ee-688a-42c0-87da-f572d0bddfd5"
       }
     }
   }
