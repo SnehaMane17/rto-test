@@ -17,6 +17,7 @@ const PracticeTest = ({ route, navigation }) => {
 
   useEffect(() => {
     const fetchPracticeTestData = async () => {
+      console.log('practicesid', s_id)
       try {
         const responseData = await fetchData(`getquestions/`, language, 25, start);
         setData(responseData.data);

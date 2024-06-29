@@ -16,6 +16,8 @@ const RTOTest = ({ route, navigation }) => {
   const [showResults, setShowResults] = useState(false);
 
   useEffect(() => {
+    console.log('rtosid', token)
+    console.log('rtosid', s_id)
     const fetchRTOTestData = async () => {
       try {
         const responseData = await fetchRTOData(`getRTOQuestions/`, language);
@@ -52,7 +54,6 @@ const RTOTest = ({ route, navigation }) => {
     setSelectedOption({ ...selectedOption, [examquestion_id]: option });
     setDisabledQuestions({ ...disabledQuestions, [examquestion_id]: false });
     checkAnswers(examquestion_id, option);
-    console.log('tesjkhhnknh')
   };
 
   const findCorrectAnswer = (question) => {
@@ -94,11 +95,11 @@ const RTOTest = ({ route, navigation }) => {
       attempted: attemptedQuestions,
       not_attempted: notAttempted,
     };
-    console.log(scoreData, 'scoree data')
+    // console.log(scoreData, 'scoree data')
 
     try {
-      const response = await saveRTOScore('saveRTOScore', scoreData,token);
-      console.log(response.data);
+      const response = await saveRTOScore('score_store', token,  correctAnswers, scoreData );
+      // console.log(response, 'testesttstts');
       setSubmitted(true);
       navigation.navigate('RTOResultScreen', { score: correctAnswers, token, s_id });
     } catch (error) {

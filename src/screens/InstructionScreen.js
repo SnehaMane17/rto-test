@@ -3,7 +3,7 @@ import React from 'react';
 import { View, Text, Button, StyleSheet, Platform } from 'react-native';
 
 const InstructionScreen = ({ navigation, route }) => {
-  const { language } = route.params;
+  const { language, s_id,  token } = route.params;
 
   const instructions = {
     english: [
@@ -25,7 +25,7 @@ const InstructionScreen = ({ navigation, route }) => {
   };
 
   const handleStartTest = () => {
-    navigation.navigate('RTOTest', { language });
+    navigation.navigate('RTOTest', { language, s_id, token});
   };
 
   return (
