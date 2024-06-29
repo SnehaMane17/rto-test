@@ -66,34 +66,34 @@ export const fetchRTOData = async (endpoint, language) => {
     }
   };
 
-  export const saveRTOScore = async (endpoint,token, score, data ) => {
+  export const saveRTOScore = async (endpoint, token, score, data) => {
     const url = `${MDS_URL}${endpoint}`;
     console.log('URL:', url); // Log the URL to the console
-    const dataToSend = { 
-      token, 
-      score ,
-      data
-    };
-    console.log('req body', dataToSend)
+  
+    const formData = new FormData();
+    formData.append('token', token);
+    formData.append('score', score);
+    formData.append('data', JSON.stringify(data)); // Assuming 'data' needs to be stringified
+  
     try {
       const response = await fetch(url, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(dataToSend),
+        body: formData,
       });
-      console.log('req body', dataToSend)
-      const data = await response.json();
-      console.log('rtodata', data)
+  
+      const responseData = await response.json();
+      console.log('Response Data:', responseData);
+  
       if (!response.ok) {
-        throw new Error(data.message || 'Failed to save score');
+        throw new Error(responseData.message || 'Failed to save score');
       }
-      return data;
+  
+      return responseData;
     } catch (error) {
       throw error;
     }
   };
+  
 
   export const fetchPracticeList = async (endpoint, language, s_id) => {
     const url = `${BASE_URL}${endpoint}${language}/${s_id}`;
