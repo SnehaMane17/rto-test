@@ -13,7 +13,7 @@ const Reading = ({ route, navigation }) => {
   useEffect(() => {
     const fetchPracticeTestData = async () => {
       try {
-        const responseData = await fetchData(`getquestions/`, language, 400, 1);
+        const responseData = await fetchData(`getquestions/`, language, 450, 1);
         setData(responseData.data);
       } catch (error) {
         Alert.alert('Error', error.message);
