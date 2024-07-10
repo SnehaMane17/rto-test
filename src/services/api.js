@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://rtovaahan.mdssoftware.com/';
+export const BASE_URL = 'http://mdssoftware.com/';
 export const MDS_URL = 'https://mdssoftware.com/api/'
 
 export const fetchData = async (endpoint, language, limit, offset) => {
@@ -17,6 +17,7 @@ const url = `${BASE_URL}${endpoint}${language}/${limit}/${offset}`;
 
 export const saveScore = async (endpoint, scoreData, token) => {
   const url = `${BASE_URL}${endpoint}`;
+  console.log(url, 'url')
   const dataToSend = {
     ...scoreData,
     token,  // Include token as a field in the body
@@ -41,6 +42,7 @@ export const saveScore = async (endpoint, scoreData, token) => {
 
 export const getScore = async (endpoint, student_id, limit, offset) => {
   const url = `${BASE_URL}${endpoint}${student_id}/${limit}/${offset}`;
+  console.log(url, 'url')
   try {
     const response = await fetch(url);
     const data = await response.json();
@@ -54,6 +56,7 @@ export const getScore = async (endpoint, student_id, limit, offset) => {
 };
 export const fetchRTOData = async (endpoint, language) => {
   const url = `${BASE_URL}${endpoint}${language}`;
+  console.log(url, 'url')
     try {
       const response = await fetch(url);
       const data = await response.json();

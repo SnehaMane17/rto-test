@@ -28,9 +28,9 @@ const WelcomeScreen = ({ route, navigation }) => {
             </View>
             <Text style={styles.description}>MG motor driving & Training school</Text>
             <Text style={styles.approval}>(Govt. Approved.)</Text>
-            <View style={styles.advisorContainer}>
+            {/* <View style={styles.advisorContainer}>
                 <Text style={styles.advisor}>R.T.O. AUTO ADVISOR</Text>
-            </View>
+            </View> */}
             <Text style={styles.address}>Plot no 54, Balaji Vihar, near Ramlyawala dairy yojana, Sikar road, Jaipur, Rajasthan India</Text>
             <Text style={styles.email}>E-mail: mgautojpr@gmail.com</Text>
         </View>
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     approval: {
         fontSize: 16,
         color: '#0000FF',
-        marginBottom: 20,
+        marginBottom: 30,
     },
     advisorContainer: {
         backgroundColor: '#FFF',
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 20,
         borderRadius: 8,
-        marginBottom: 40,
+        marginBottom: 50,
     },
     advisor: {
         fontSize: 25,
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#0000FF',
         textAlign: 'center',
-        marginBottom: 30,
+        marginBottom: 40,
     },
     email: {
         fontSize: 16,
