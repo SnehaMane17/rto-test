@@ -5,7 +5,7 @@ import { fetchPracticeList } from '../services/api';
 const QuestionDivision = ({ route, navigation }) => {
   const [data, setData] = useState([]);
   const [totalQuestions, setTotalQuestions] = useState(0);
-  const { language, s_id } = route.params;
+  const { language, s_id, token } = route.params;
   const questionsPerPage = 25;
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const QuestionDivision = ({ route, navigation }) => {
   const handleCardPress = (start, end) => {
     const newEnd = start + questionsPerPage - 1;
     console.log('handleCardPress', s_id);
-    navigation.navigate('Practice Test', { language, start, end: newEnd, s_id });
+    navigation.navigate('Practice Test', { language, start, end: newEnd, s_id, token });
   };
 
   const renderItem = ({ item, index }) => {

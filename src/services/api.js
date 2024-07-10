@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://mdssoftware.com/';
+export const BASE_URL = 'https://mdssoftware.com/';
 export const MDS_URL = 'https://mdssoftware.com/api/'
 
 export const fetchData = async (endpoint, language, limit, offset) => {
