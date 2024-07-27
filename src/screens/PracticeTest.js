@@ -110,13 +110,13 @@ const PracticeTest = ({ route, navigation }) => {
       not_attempted: notAttempted,
       flag:flag,
       limit: 25,
-      offset: start
+      offset: start,
+      lang: language
     };
-  
-
+  console.log('scoredata', scoreData)
     try {
       const response = await saveScore('savescore', scoreData, token);
-      console.log(response.data);
+      console.log(response.data,'dataaaaaa');
       setSubmitted(true);
       navigation.navigate('PracticeResult', { score: correctAnswers, token, s_id });
     } catch (error) {

@@ -1,9 +1,27 @@
 
-import React from 'react';
-import { View, Text, Button, StyleSheet, Platform } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { View, Text, Button, StyleSheet, Platform, Alert } from 'react-native';
+import { fetchPracticeDataStatus } from '../services/api';
 
 const InstructionScreen = ({ navigation, route }) => {
   const { language, s_id,  token } = route.params;
+
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const fetchPracticeTestDataStatus = async () => {
+      try {
+        const responseData = await fetchPracticeDataStatus(`getPracticeCompletionStatus/`, language, s_id);
+        setData(responseData.data);
+        console.log('cattt', responseData.data)
+      } catch (error) {
+        Alert.alert('Error', error.message);
+        console.log(error, 'error');
+      }
+    };
+
+    fetchPracticeTestDataStatus();
+  }, []);
+
 
   const instructions = {
     english: [
@@ -25,7 +43,13 @@ const InstructionScreen = ({ navigation, route }) => {
   };
 
   const handleStartTest = () => {
-    navigation.navigate('RTOTest', { language, s_id, token});
+    if (data.status) {
+      navigation.navigate('RTOTest', { language, s_id, token });
+    } else {
+      Alert.alert(
+        language === 'hindi' ? 'कृपया ६०% अभ्यास परीक्षा पूरी करें।' : 'Please complete atleast 60 % of the Practice test.'
+      );
+    }
   };
 
   return (

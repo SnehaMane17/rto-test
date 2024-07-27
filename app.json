@@ -2,7 +2,7 @@
   "expo": {
     "name": "driving school app",
     "slug": "drivingschoolapp",
-    "version": "1.0.0",
+    "version": "3.0.0",
     "orientation": "portrait",
     "icon": "./assets/logoH.jpeg",
     "splash": {
@@ -11,7 +11,8 @@
       "backgroundColor": "#FFFFFF"
     },
     "android": {
-       "package": "com.subhashchand.drivingschoolapp"
+       "package": "com.subhashchand.drivingschoolapp",
+       "versionCode": 2
     },
     "extra": {
       "eas": {

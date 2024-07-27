@@ -1,5 +1,6 @@
 export const BASE_URL = 'https://mdssoftware.com/';
-export const MDS_URL = 'https://mdssoftware.com/api/'
+export const MDS_URL = 'https://mdssoftware.com/api/';
+export const testURL = "https://rtovaahan.mdssoftware.com/"
 
 export const fetchData = async (endpoint, language, limit, offset) => {
 const url = `${BASE_URL}${endpoint}${language}/${limit}/${offset}`;
@@ -16,11 +17,11 @@ const url = `${BASE_URL}${endpoint}${language}/${limit}/${offset}`;
 };
 
 export const saveScore = async (endpoint, scoreData, token) => {
-  const url = `${BASE_URL}${endpoint}`;
+  const url = `${testURL}${endpoint}`;
   console.log(url, 'url')
   const dataToSend = {
     ...scoreData,
-    token,  // Include token as a field in the body
+    token
   };
   try {
     const response = await fetch(url, {
@@ -54,6 +55,23 @@ export const getScore = async (endpoint, student_id, limit, offset) => {
     throw error;
   }
 };
+
+export const fetchPracticeDataStatus = async (endpoint, language, s_id) => {
+  const url = `${testURL}${endpoint}${language}/${s_id}`;
+  console.log(url, 'url')
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log(data, 'dataaaaa')
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to fetch data');
+      }
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  };
+
 export const fetchRTOData = async (endpoint, language) => {
   const url = `${BASE_URL}${endpoint}${language}`;
   console.log(url, 'url')
