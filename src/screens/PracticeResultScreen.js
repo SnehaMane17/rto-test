@@ -13,7 +13,7 @@ const PracticeResultScreen = ({ route,navigation }) => {
   useEffect(() => {
     const backAction = () => {
       console.log('Navigating back to Home with token:', token, 'and s_id:', s_id);
-      navigation.navigate('Home', {token, s_id});
+      navigation.navigate('Practice', {token, s_id});
       return true;
     };
 
