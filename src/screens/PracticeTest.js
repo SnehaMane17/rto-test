@@ -116,7 +116,7 @@ const PracticeTest = ({ route, navigation }) => {
   console.log('scoredata', scoreData)
     try {
       const response = await saveScore('savescore', scoreData, token);
-      console.log(response.data,'dataaaaaa');
+      console.log(response,'dataaaaaa');
       setSubmitted(true);
       navigation.navigate('PracticeResult', { score: correctAnswers, token, s_id });
     } catch (error) {

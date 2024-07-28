@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Alert, Button, TextInput, Image } from 'react-native';
-import { fetchData, BASE_URL } from '../services/api';
+import { fetchData, BASE_URL, saveReadingCount } from '../services/api';
 import { RadioButton } from 'react-native-paper';
 
 const Reading = ({ route, navigation }) => {
-  const { language, start, end } = route.params;
+  const { language, start, end, s_id } = route.params;
   const [data, setData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showInput, setShowInput] = useState(false);
@@ -24,6 +24,26 @@ const Reading = ({ route, navigation }) => {
     fetchPracticeTestData();
   }, [language, start, end, currentIndex]);
 
+
+  const handleNextAndSubmit = async () => {
+    const readingData = {
+      lang: language,
+      student_id: s_id,
+      question: currentIndex + 1
+    };
+    console.log('readingData', readingData);
+    try {
+      const response = await saveReadingCount('saveReadingQues', readingData);
+    } catch (error) {
+      Alert.alert('Error', 'Failed to save score');
+      console.log(error, 'error');
+    }
+    if (currentIndex < data.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+
   const findCorrectAnswer = (question) => {
     if (question && question.ANSWER) {
       const correctAnswer = question.ANSWER;
@@ -33,12 +53,6 @@ const Reading = ({ route, navigation }) => {
       if (correctAnswer === '4') return question.OPTION4;
     }
     return 'Answer Not Found';
-  };
-
-  const handleNext = () => {
-    if (currentIndex < data.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    }
   };
 
   const handlePrevious = () => {
@@ -78,7 +92,7 @@ const Reading = ({ route, navigation }) => {
         value={questionNumber}
         onChangeText={setQuestionNumber}
       />
-      {questionNumber > 431 && (
+      {questionNumber > 450 && (
         <Text style={styles.errorMessage}>Question number cannot be greater than 431</Text>
       )}
       <View style={styles.buttonProceed}>
@@ -91,7 +105,7 @@ const Reading = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Question {currentIndex + 1} / 431</Text>
+      <Text style={styles.title}>Question {currentIndex + 1} / 450</Text>
       {question && (
         <View style={[styles.itemContainer]}>
           <View style={{ flexDirection: 'row' }}>
@@ -129,7 +143,7 @@ const Reading = ({ route, navigation }) => {
       <View style={styles.buttonContainer}>
         <Button title="Previous" onPress={handlePrevious} disabled={currentIndex === 0} />
         <Button title="Go to Question" onPress={() => setShowInput(true)} />
-        <Button title="Next" onPress={handleNext} disabled={currentIndex === data.length - 1}/>
+        <Button title="Next" onPress={handleNextAndSubmit} disabled={currentIndex === data.length - 1}/>
       </View>
     </View>
   );
